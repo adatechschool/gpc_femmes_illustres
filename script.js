@@ -5,6 +5,13 @@ async function womenList() {
 
   const data = await response.json();
 
+
+  // dictionnaire des images alternatives , un dictionnaire est une liste de (clé : valeur)
+  const alternativeImagesDic = {
+    "Tatiana et Katia Levha" : "https://www.epices-roellinger.com/media/rich-editor/sateepicesroellinger1-66599db449d7f.png" , 
+    "Christelle Brua" : "https://resize.elle.fr/portrait/var/plain_site/storage/images/elle-a-table/les-dossiers-de-la-redaction/news-de-la-redaction/christelle-brua-premiere-femme-a-etre-elue-meilleure-patissiere-de-restaurant-du-monde-3730244/88648484-5-fre-FR/Christelle-Brua-premiere-femme-a-etre-elue-Meilleure-Patissiere-de-restaurant-du-monde.jpg" ,
+
+  };
   document.querySelector("#womenTitle").innerHTML =
     `<h1>Femmes illustres à Paris  ${data.results.length} - Portraits 🔥</h1`;
 
@@ -44,7 +51,19 @@ async function womenList() {
       descriptionFive.innerHTML = results[i].desc5;
       
       const urlOfPictures = document.createElement("img");
-      urlOfPictures.setAttribute("src", results[i].thumb_url);
+      
+
+        let currentName = results[i].name;
+        let alternativeImage = alternativeImagesDic[currentName]; // on associe une image alternative au name de la personnalité
+      
+      if(results[i].thumb_url.includes("NoPhoto.png")) { // Si Pas de photo associée à la personnalité féminine alors utiliser une image alternative
+        // La photo n'est pas fournie par l'API
+        urlOfPictures.setAttribute("src", alternativeImage);
+      }else{
+        // on utilise la photo fournie par l'API
+        urlOfPictures.setAttribute("src", results[i].thumb_url);
+      }
+      
       
       document.querySelector("#womenPortraits").appendChild(nameIndex);
       document.querySelector("#womenPortraits").appendChild(urlOfPictures);
