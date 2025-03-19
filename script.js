@@ -14,54 +14,110 @@ async function womenList() {
   const results = data.results;
   console.log(results);
 
-    
   for (let i = 0; i < results.length; i++) {
-      console.log(data.results[i]);
+    console.log(data.results[i]);
 
-      
-      const nameIndex = document.createElement("h2");
-      nameIndex.innerHTML = results[i].name;
-      
-      const tabName = document.createElement("h3");
-      tabName.innerHTML = results[i].tab_name;
-      
-      const address = document.createElement("h3");
-      address.innerHTML = `Adresse : ${results[i].short_desc}`;
-      
-      const descriptionOne = document.createElement("h3");
-      descriptionOne.innerHTML = results[i].desc1;
-      
-      const descriptionTwo = document.createElement("h3");
-      descriptionTwo.innerHTML = results[i].desc2;
-      
-      const descriptionThree = document.createElement("h3");
-      descriptionThree.innerHTML = results[i].desc3;
-      
-      const descriptionFour = document.createElement("h3");
-      descriptionFour.innerHTML = results[i].desc4;
-      
-      const descriptionFive = document.createElement("h3");
-      descriptionFive.innerHTML = results[i].desc5;
-      
-      const urlOfPictures = document.createElement("img");
-      urlOfPictures.setAttribute("src", results[i].thumb_url);
-      
-      document.querySelector("#womenPortraits").appendChild(nameIndex);
-      document.querySelector("#womenPortraits").appendChild(urlOfPictures);
-      document.querySelector("#womenPortraits").appendChild(tabName);
-      document.querySelector("#womenPortraits").appendChild(address);
-      document.querySelector("#womenPortraits").appendChild(descriptionOne);
-      document.querySelector("#womenPortraits").appendChild(descriptionTwo);
-      document.querySelector("#womenPortraits").appendChild(descriptionThree);
-      document.querySelector("#womenPortraits").appendChild(descriptionFour);
-      document.querySelector("#womenPortraits").appendChild(descriptionFive);
-      
-      // console.log(results[0].thumb_url);
-      
-      //urlOfPictures.setAttribute("src", results[0]."https://files.slack.com/files-tmb/TFLNG6MFU-F08J173S8VC-0f185969ca/tatiana_720.png" );
-    //   if (nameIndex === "Tatiana et Katia Levha"){
-    //     urlOfPictures = "https://files.slack.com/files-tmb/TFLNG6MFU-F08J173S8VC-0f185969ca/tatiana_720.png"
-    //       };
+    const nameIndex = document.createElement("h2");
+    nameIndex.innerHTML = results[i].name;
+
+    const tabName = document.createElement("h3");
+    tabName.innerHTML = results[i].tab_name;
+
+    const address = document.createElement("h3");
+    address.innerHTML = `Adresse : ${results[i].short_desc}`;
+
+    const descriptionOne = document.createElement("h3");
+    descriptionOne.innerHTML = results[i].desc1;
+
+    const descriptionTwo = document.createElement("h3");
+    descriptionTwo.innerHTML = results[i].desc2;
+
+    const descriptionThree = document.createElement("h3");
+    descriptionThree.innerHTML = results[i].desc3;
+
+    const descriptionFour = document.createElement("h3");
+    descriptionFour.innerHTML = results[i].desc4;
+
+    const descriptionFive = document.createElement("h3");
+    descriptionFive.innerHTML = results[i].desc5;
+
+    const urlOfPictures = document.createElement("img");
+    urlOfPictures.setAttribute("src", results[i].thumb_url);
+
+    //urlOfPictures.setAttribute("src", results[0]."https://files.slack.com/files-tmb/TFLNG6MFU-F08J173S8VC-0f185969ca/tatiana_720.png");
+    if (results[i].name === "Tatiana et Katia Levha") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://scontent-cdg4-1.xx.fbcdn.net/v/t1.6435-9/53607294_2241335142624891_7025497508960796672_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=q2kNJilZtZ0Q7kNvgHk862F&_nc_oc=AdhXoZE8TBOxfxQWsrUmufyyVYXHrYeTwIRJbwliIIf8Q-fF6ZPmluR3b-cYI5-zSMc&_nc_zt=23&_nc_ht=scontent-cdg4-1.xx&_nc_gid=3NG3EHCcFo6R2fZcCKv9kQ&oh=00_AYHltQ1vNieWAHUqRBMCvx9SH9dxiUZCMTwKhDkSDlKPJA&oe=680117A7"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
+    } else if (results[i].name === "Christelle Brua") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://www.viedeluxe.fr/wp-content/uploads/2023/02/Christelle-Brua-@NataliaKhoroshaieva.jpg"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
     }
+    else if (results[i].name === "Roxana Maracineanu") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://cacheimg.gsp.ro/autocrop/smp-images-production/gsp.ro/01082024/67e85de5-022d-4803-9d9b-70672e70edc0.jpg?width=900&height=0"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
+    }
+    else if (results[i].name === "Alessandra Montagne") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://cdn.shopify.com/s/files/1/0796/9751/0688/files/Anne_Claire_HERAUD_4_600x600.jpg?v=1693330894"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
+    }
+    else if (results[i].name === "Eleonora Zuliani") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://foodandsens.com/wp-content/uploads/2017/11/eleonora.jpg"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
+    }
+    else if (results[i].name === "Manon Fleury") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://img.lemde.fr/2024/01/15/0/0/3319/4724/664/0/75/0/2aa1fe6_1705332752011-manon-fleury-a-terencebk-17-copie.jpg"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
+    }
+    else if (results[i].name === "Justine Piluso") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://simoneetnelson.com/wp-content/uploads/2025/01/Justine-PILUSO-min.png"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
+    }
+
+    document.querySelector("#womenPortraits").appendChild(nameIndex);
+    document.querySelector("#womenPortraits").appendChild(urlOfPictures);
+    document.querySelector("#womenPortraits").appendChild(tabName);
+    document.querySelector("#womenPortraits").appendChild(address);
+    document.querySelector("#womenPortraits").appendChild(descriptionOne);
+    document.querySelector("#womenPortraits").appendChild(descriptionTwo);
+    document.querySelector("#womenPortraits").appendChild(descriptionThree);
+    document.querySelector("#womenPortraits").appendChild(descriptionFour);
+    document.querySelector("#womenPortraits").appendChild(descriptionFive);
+
+    // console.log(results[0].thumb_url);
+  }
 }
 womenList();
+
+
+// urlOfPictures.addEventListener("click", () => {
+
+
+// })
