@@ -3,7 +3,7 @@ async function womenList() {
     "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/femmes-illustres-a-paris-portraits/records?limit=100&refine=tab_name%3A%22Artistes%22&refine=tab_name%3A%22Cheffes%22&refine=tab_name%3A%22Com%C3%A9diennes%22&refine=tab_name%3A%22Femmes%20de%20lettres%22&refine=tab_name%3A%22Politiques%22&refine=tab_name%3A%22Scientifiques%22&refine=tab_name%3A%22Sportives%22"
   );
 
-  const data = await response.json();
+  const data = await response.json(); 
 
 
   // dictionnaire des images alternatives , un dictionnaire est une liste de (clé : valeur)
