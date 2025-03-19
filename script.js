@@ -8,7 +8,7 @@ async function womenList() {
   document.querySelector("#womenTitle").innerHTML =
     `<h1>Femmes illustres à Paris  ${data.results.length} - Portraits 🔥</h1`;
 
-  //console.log("liste filtrée", data.results.filter((result)=> result.tab_name != "77 Illustres Parisiennes"))
+  // console.log("liste filtrée", data.results.filter((result)=> result.tab_name != "77 Illustres Parisiennes"))
   // const results = data.results.filter((result)=> result.tab_name != "77 Illustres Parisiennes")
 
   const results = data.results;
@@ -22,27 +22,31 @@ async function womenList() {
 
     const tabName = document.createElement("h3");
     tabName.innerHTML = results[i].tab_name;
+    tabName.className = `categories`;
 
     const address = document.createElement("h3");
     address.innerHTML = `Adresse : ${results[i].short_desc}`;
+    address.className = `women-address`;
 
-    const descriptionOne = document.createElement("h3");
+    const descriptionOne = document.createElement("p1");
     descriptionOne.innerHTML = results[i].desc1;
 
-    const descriptionTwo = document.createElement("h3");
+    const descriptionTwo = document.createElement("p2");
     descriptionTwo.innerHTML = results[i].desc2;
 
-    const descriptionThree = document.createElement("h3");
+    const descriptionThree = document.createElement("p3");
     descriptionThree.innerHTML = results[i].desc3;
 
-    const descriptionFour = document.createElement("h3");
+    const descriptionFour = document.createElement("p4");
     descriptionFour.innerHTML = results[i].desc4;
 
-    const descriptionFive = document.createElement("h3");
+    const descriptionFive = document.createElement("p5");
     descriptionFive.innerHTML = results[i].desc5;
 
     const urlOfPictures = document.createElement("img");
     urlOfPictures.setAttribute("src", results[i].thumb_url);
+
+    [descriptionOne, descriptionTwo, descriptionThree, descriptionFour, descriptionFive].forEach(el => el.className = "all-descriptions");
 
     //urlOfPictures.setAttribute("src", results[0]."https://files.slack.com/files-tmb/TFLNG6MFU-F08J173S8VC-0f185969ca/tatiana_720.png");
     if (results[i].name === "Tatiana et Katia Levha") {
