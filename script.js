@@ -17,38 +17,75 @@ async function womenList() {
   for (let i = 0; i < results.length; i++) {
     console.log(data.results[i]);
 
+
+    const cardFront = document.createElement("div");
+    cardFront.classList.add("card-front");
+    
+    const cardBack = document.createElement("div");
+    cardBack.classList.add("card-back");
+
+    
+    // la div des noms dans est .name-index
+    const name = document.createElement("div");
+    name.classList.add("name-index");
     const nameIndex = document.createElement("h2");
     nameIndex.innerHTML = results[i].name;
-
+    name.appendChild(nameIndex);
+    
+    // la div des categories dans est .categorie
+    const category = document.createElement("div");
+    category.classList.add("categorie");
     const tabName = document.createElement("h3");
     tabName.innerHTML = results[i].tab_name;
-    tabName.className = `categories`;
-
+    category.appendChild(tabName)
+    
+    // la div des adress dans est .women-address
+    const womenAddress = document.createElement("div");
+    womenAddress.classList.add("women-address");
     const address = document.createElement("h3");
     address.innerHTML = `Adresse : ${results[i].short_desc}`;
-    address.className = `women-address`;
-
-    const descriptionOne = document.createElement("p1");
-    descriptionOne.innerHTML = results[i].desc1;
-
-    const descriptionTwo = document.createElement("p2");
-    descriptionTwo.innerHTML = results[i].desc2;
-
-    const descriptionThree = document.createElement("p3");
-    descriptionThree.innerHTML = results[i].desc3;
-
-    const descriptionFour = document.createElement("p4");
-    descriptionFour.innerHTML = results[i].desc4;
-
-    const descriptionFive = document.createElement("p5");
-    descriptionFive.innerHTML = results[i].desc5;
-
+    womenAddress.appendChild(address);
+    
+    
+    // la div des photos dans est .women-pictures
+    const pictures = document.createElement("div");
+    pictures.classList.add("women-pictures");
+    
     const urlOfPictures = document.createElement("img");
     urlOfPictures.setAttribute("src", results[i].thumb_url);
-
-    [descriptionOne, descriptionTwo, descriptionThree, descriptionFour, descriptionFive].forEach(el => el.className = "all-descriptions");
-
-    //urlOfPictures.setAttribute("src", results[0]."https://files.slack.com/files-tmb/TFLNG6MFU-F08J173S8VC-0f185969ca/tatiana_720.png");
+    pictures.appendChild(urlOfPictures);
+    
+    
+    // descriptions
+    // if (typeof variable !== 'undefined' && variable !== null) 
+    
+    const allDescription = results[i].desc1 + "" + results[i].desc2
+    if (results[i].desc3 !== null) {
+      allDescription.concat("", results[i].desc3 )
+    }
+    
+    if (results[i].desc4 !== null) {
+      console.log("it works")
+      allDescription.concat("", results[i].desc4)
+    }
+    
+    if (results[i].desc5 !== null) {
+      console.log("it works")
+      allDescription.concat("", results[i].desc5)
+    }
+    
+    
+    // const allDescription = results[i].desc1 + "" + results[i].desc2 + " " + results[i].desc3 + " " + results[i].desc4 + " " + results[i].desc5;
+    console.log(" emoji: ", typeof(allDescription))
+    console.log(" emoji: ", allDescription)
+    console.log(" emoji: ", allDescription.replaceAll("null", ""));
+    const descAll = document.createElement("div");
+    descAll.classList.add("desc-all");
+    descAll.append(allDescription);
+    
+    
+    
+    
     if (results[i].name === "Tatiana et Katia Levha") {
       urlOfPictures.setAttribute(
         "src",
@@ -104,24 +141,20 @@ async function womenList() {
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     }
+   
+    document.querySelector("#womenPortraits").appendChild(cardFront);
+    // grande div dans laquel il y a noms et photo
+        cardFront.appendChild(name); // fait
+      cardFront.appendChild(pictures); // fait
 
-    document.querySelector("#womenPortraits").appendChild(nameIndex);
-    document.querySelector("#womenPortraits").appendChild(urlOfPictures);
-    document.querySelector("#womenPortraits").appendChild(tabName);
-    document.querySelector("#womenPortraits").appendChild(address);
-    document.querySelector("#womenPortraits").appendChild(descriptionOne);
-    document.querySelector("#womenPortraits").appendChild(descriptionTwo);
-    document.querySelector("#womenPortraits").appendChild(descriptionThree);
-    document.querySelector("#womenPortraits").appendChild(descriptionFour);
-    document.querySelector("#womenPortraits").appendChild(descriptionFive);
+    // grand div dans laquel il y a infos
+    document.querySelector("#womenPortraits").appendChild(cardBack);
 
-    // console.log(results[0].thumb_url);
+    cardFront.appendChild(category); // fait
+    cardBack.appendChild(womenAddress); // fait
+    cardBack.append(descAll);
+ 
   }
 }
 womenList();
 
-
-// urlOfPictures.addEventListener("click", () => {
-
-
-// })

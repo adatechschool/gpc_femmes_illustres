@@ -1,18 +1,9 @@
-/* .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "Arial";
-    background-color: #d6cbb2;
-    padding: 15px 20px;
-} */
-
 
 .banner {
     background-image: url('https://media.beauxarts.com/uploads/2024/09/unec66a6484-1300x975.jpg'); /* Remplace par ton image */
     background-size: cover;
     background-position: center;
-    height: 500px;
+    height: 50vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -48,23 +39,33 @@ h1{
     padding: 10px;
 }
 
-h2{
+/* h2{
     color: rgb(124, 63, 117);
+} */
+.all-womentitle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+.name-index {
+color: rgb(106, 202, 167);
+  }
+
+  .categorie {
+    background-color: aqua;
+  }
+
+.women-pictures {
+   
 }
 
-#womenTitle #womenPortrait {
-    text-align: center;
-    align-items: center;
-}
 
-.women-address {
-    color: rgb(235, 107, 33);
-}
-
-.categories {
-    color: orange;
-}
-
-.all-descriptions {
-    color: rgb(251, 24, 209);
-}
+  .women-address {
+    color: red;
+  }
+  .desc-all {
+    background-color: rgb(225, 216, 233);
+  }
