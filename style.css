@@ -1,7 +1,51 @@
-h1{
-    color: rgb(125, 65, 220);
+/* .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Arial";
+    background-color: #d6cbb2;
+    padding: 15px 20px;
+} */
+
+
+.banner {
+    background-image: url('https://media.beauxarts.com/uploads/2024/09/unec66a6484-1300x975.jpg'); /* Remplace par ton image */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    /* font-weight: 300; */
+}
+
+body {
+background-color: whitesmoke;
+}
+
+.banner h1 {
+    font-size: 2rem;
+    background: rgba(198, 186, 186, 0.5); /* Ajoute un fond semi-transparent pour mieux voir le texte */
+    margin-top: 150px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: rgb(14, 12, 12)
+}
+
+
+h1{
+    color: rgba(255, 52, 184, 0.873);
+    text-align: center;
+
+}
+
+.second-title h1 {
+    color: rgb(58, 58, 53); /* Une couleur différente */
+    /* font-size: 1.8rem; Taille spécifique */
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
 }
 
 h2{
@@ -16,8 +60,6 @@ h2{
 .women-address {
     color: rgb(235, 107, 33);
 }
-
-
 
 .categories {
     color: orange;
