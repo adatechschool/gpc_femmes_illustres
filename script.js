@@ -56,33 +56,32 @@ async function womenList() {
     pictures.appendChild(urlOfPictures);
     
     
-    // descriptions
-    // if (typeof variable !== 'undefined' && variable !== null) 
-    
-    const allDescription = results[i].desc1 + "" + results[i].desc2
-    if (results[i].desc3 !== null) {
-      allDescription.concat("", results[i].desc3 )
-    }
-    
-    if (results[i].desc4 !== null) {
-      console.log("it works")
-      allDescription.concat("", results[i].desc4)
-    }
-    
-    if (results[i].desc5 !== null) {
-      console.log("it works")
-      allDescription.concat("", results[i].desc5)
-    }
-    
-    
-    // const allDescription = results[i].desc1 + "" + results[i].desc2 + " " + results[i].desc3 + " " + results[i].desc4 + " " + results[i].desc5;
-    console.log(" emoji: ", typeof(allDescription))
-    console.log(" emoji: ", allDescription)
-    console.log(" emoji: ", allDescription.replaceAll("null", ""));
-    const descAll = document.createElement("div");
-    descAll.classList.add("desc-all");
-    descAll.append(allDescription);
-    
+ 
+    const p1 = document.createElement("p");
+    p1.innerHTML = results[i].desc1;
+
+    const p2 = document.createElement("p");
+    p2.innerHTML = results[i].desc2;
+
+    const p3 = document.createElement("p");
+    p3.innerHTML = results[i].desc3;
+
+    const p4 = document.createElement("p");
+    p4.innerHTML = results[i].desc4;
+
+    const p5 = document.createElement("p");
+    p5.innerHTML = results[i].desc5;
+
+
+    // la div des descriptions est de type class sous le nom de .desc-all
+    const allDescriptions = document.createElement("div");
+    allDescriptions.classList.add("desc-all");
+  
+    allDescriptions.appendChild(p1);
+    allDescriptions.appendChild(p2);
+    allDescriptions.appendChild(p3);
+    allDescriptions.appendChild(p4);
+    allDescriptions.appendChild(p5);
     
     
     
@@ -152,7 +151,7 @@ async function womenList() {
 
     cardFront.appendChild(category); // fait
     cardBack.appendChild(womenAddress); // fait
-    cardBack.append(descAll);
+    cardBack.append(allDescriptions);
  
   }
 }
