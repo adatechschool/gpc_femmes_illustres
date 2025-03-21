@@ -1,73 +1,160 @@
-
 .banner {
-    background-image: url('https://media.beauxarts.com/uploads/2024/09/unec66a6484-1300x975.jpg'); /* Remplace par ton image */
-    background-size: cover;
-    background-position: center;
-    object-fit: contain;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-   
+  background-image: url('https://media.beauxarts.com/uploads/2024/09/unec66a6484-1300x975.jpg'); /* Remplace par ton image */
+  background-size: cover;
+  background-position: center 25%;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  filter:opacity(80%);
+  /* Ajoute un fond semi-transparent pour mieux voir le texte */
 }
 
 body {
 background-color: whitesmoke;
 }
-
 .banner h1 {
-    font-size: 2rem;
-    background: rgba(198, 186, 186, 0.5); /* Ajoute un fond semi-transparent pour mieux voir le texte */
-    margin-top: 150px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: rgb(14, 12, 12)
+  display: flex;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 4.5vw;
+  /* background: rgba(198, 186, 186, 0.5); Ajoute un fond semi-transparent pour mieux voir le texte */
+  margin-top: 200px;
+ margin : 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: rgba(230, 216, 216, 0.5); /* Fond semi-transparent */
+  color: rgb(130, 66, 29);
+  min-width: 50%;
 }
 
-
-h1{
-    color: rgba(255, 52, 184, 0.873);
-    text-align: center;
-
-}
-
+ h1{ 
+  color: rgba(0, 0, 0, 0.873);
+  text-align: center;
+} 
 .second-title h1 {
-    color: rgb(58, 58, 53); /* Une couleur différente */
-    /* font-size: 1.8rem; Taille spécifique */
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
+  color: rgb(58, 58, 53); /* Une couleur différente */
+  /* font-size: 1.8rem; Taille spécifique */
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',;;
 }
-
 /* h2{
-    color: rgb(124, 63, 117);
+  color: rgb(124, 63, 117);
 } */
 .all-womentitle {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-  }
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 4px ;
+}
 .name-index {
 color: rgb(106, 202, 167);
-  }
+border: 3px double #df7a7a;
+border-radius: 7px;
+/* padding: -20 20px;  */
+}
 
-  .categorie {
-    background-color: aqua;
-  }
-
+.categorie {
+  background-color: rgb(249, 249, 249);
+}
 .women-pictures {
-   
+
+  width: 220px;
+  height: 330px;
+
+}
+.women-address {
+  color: rgb(7, 6, 6);
+}
+.desc-all {
+  background-color: rgb(238, 230, 230);
+}
+  
+  #womenPortraits {
+    display: flex;
+    overflow-x: auto;  /* Active le défilement horizontal */
+    gap: 20px;  /* Espacement entre les cartes */
+    padding: 20px 0; /* Espacement vertical si nécessaire */
+    scroll-snap-type: x mandatory;  
+    justify-content: start;   
+  }
+  
+  .card {
+    width: 300px;
+    height: 450px;
+    perspective: 1000px; /* Pour un effet 3D */
+    flex-shrink: 0;  
+    margin: 0.8%;   
+    border-radius: 5%;        /* Empêche les cartes de se réduire */
+  /* scroll-snap-align: start;  */
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; /* Préserve l'effet 3D */
+  transition: transform 0.6s; /* Animation de la rotation */
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Masquer l'arrière de la carte */
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column; /* Les éléments à l'intérieur de la carte sont organisés verticalement */
+    justify-content: space-between;
+    border-radius: 5%;
+    /* border: 5px solid #030303ad; */
+}
+
+/* Le verso de la carte est initialement retourné */
+.card.flipped .card-inner {
+  transform: rotateY(180deg); /* Tourner la carte */
+}
+.card:hover {
+  transform: scale(1.1); /* Agrandit la carte au survol */
+  box-shadow: 0 4px 8px rgba(184, 1, 1, 0.2); /* Ajoute une ombre douce */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transition pour un effet fluide */
+}
+.card-back {
+    transform: rotateY(180deg); /* Retourner le verso */
+    /* border-radius: 5%; */
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(238, 230, 230);
+}
+
+.card-front .name-index {
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+  margin-bottom: 10px; /* Espacement entre le nom et l'image */
+}
+
+.card-front .women-pictures {
+  display: flex;
+  justify-content:center;
+}
+
+.card-front img {
+  width: 100%; /* L'image occupe toute la largeur de la carte */
+  height: auto; /* Limite la hauteur de l'image */
+  object-fit: cover;
 }
 
 
-  .women-address {
-    color: red;
-  }
-  .desc-all {
-    background-color: rgb(225, 216, 233);
-  }
+
+

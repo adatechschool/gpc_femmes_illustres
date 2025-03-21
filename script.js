@@ -5,8 +5,8 @@ async function womenList() {
 
   const data = await response.json(); 
 
-  document.querySelector("#womenTitle").innerHTML =
-    `<h1>Femmes illustres à Paris  ${data.results.length} - Portraits 🔥</h1`;
+  // document.querySelector("#womenTitle").innerHTML =
+  //   `<h1>Femmes illustres à Paris  ${data.results.length} - Portraits 🔥</h1`;
 
   // console.log("liste filtrée", data.results.filter((result)=> result.tab_name != "77 Illustres Parisiennes"))
   // const results = data.results.filter((result)=> result.tab_name != "77 Illustres Parisiennes")
@@ -17,6 +17,11 @@ async function womenList() {
   for (let i = 0; i < results.length; i++) {
     console.log(data.results[i]);
 
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const cardInner = document.createElement("div");
+    cardInner.classList.add("card-inner");
 
     const cardFront = document.createElement("div");
     cardFront.classList.add("card-front");
@@ -55,35 +60,22 @@ async function womenList() {
     urlOfPictures.setAttribute("src", results[i].thumb_url);
     pictures.appendChild(urlOfPictures);
     
-    
- 
     const p1 = document.createElement("p");
     p1.innerHTML = results[i].desc1;
-
     const p2 = document.createElement("p");
     p2.innerHTML = results[i].desc2;
-
     const p3 = document.createElement("p");
     p3.innerHTML = results[i].desc3;
-
     const p4 = document.createElement("p");
     p4.innerHTML = results[i].desc4;
-
     const p5 = document.createElement("p");
     p5.innerHTML = results[i].desc5;
-
 
     // la div des descriptions est de type class sous le nom de .desc-all
     const allDescriptions = document.createElement("div");
     allDescriptions.classList.add("desc-all");
   
-    allDescriptions.appendChild(p1);
-    allDescriptions.appendChild(p2);
-    allDescriptions.appendChild(p3);
-    allDescriptions.appendChild(p4);
-    allDescriptions.appendChild(p5);
-    
-    
+    allDescriptions.append(p1, p2, p3, p4, p5);
     
     if (results[i].name === "Tatiana et Katia Levha") {
       urlOfPictures.setAttribute(
@@ -141,18 +133,19 @@ async function womenList() {
       urlOfPictures.style.height = "330";
     }
    
-    document.querySelector("#womenPortraits").appendChild(cardFront);
-    // grande div dans laquel il y a noms et photo
-        cardFront.appendChild(name); // fait
-      cardFront.appendChild(pictures); // fait
+    cardFront.append(name, pictures); 
+    cardBack.append(category, womenAddress, allDescriptions);
 
-    // grand div dans laquel il y a infos
-    document.querySelector("#womenPortraits").appendChild(cardBack);
+    cardInner.append(cardFront, cardBack);
+    card.appendChild(cardInner);
 
-    cardFront.appendChild(category); // fait
-    cardBack.appendChild(womenAddress); // fait
-    cardBack.append(allDescriptions);
- 
+    document.querySelector("#womenPortraits").appendChild(card);
+
+    card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+
+
+    })
   }
 }
 womenList();
