@@ -25,6 +25,8 @@
   align-items: flex-start; /* Aligne verticalement en bas */
   padding-top: 20px; /* Ajoute un espace en bas */
   /* filter: grayscale(100%); */
+
+  /* margin-bottom: 20px; */
 }
 
 .banner::before {
@@ -92,6 +94,9 @@ h1 {
   justify-content: center;
   gap: 20px;
   padding-left: 4px;
+
+  /* margin-bottom: 20px; */
+
 }
 
 .name-index {
@@ -225,6 +230,8 @@ h1 {
   object-fit: cover;
 }
 
+/* .banner-two{
+} */
 button {
   background-color: #eddddb;
   color: black; 
@@ -249,3 +256,18 @@ button:hover {
   padding: 10px;
 
 }
+.leafletContainer{
+
+display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+
+}
+#map { 
+  width: 600px;
+  height: 400px; 
+  position: relative;
+  outline-style: none;
+margin-top: -5%;
+ }
