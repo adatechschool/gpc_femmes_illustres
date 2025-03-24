@@ -19,6 +19,7 @@ async function womenList() {
 
     const card = document.createElement("div");
     card.classList.add("card");
+    card.setAttribute("data-category", results[i].tab_name);
 
     const cardInner = document.createElement("div");
     cardInner.classList.add("card-inner");
@@ -40,9 +41,10 @@ async function womenList() {
     // la div des categories dans est .categorie
     const category = document.createElement("div");
     category.classList.add("categorie");
+
     const tabName = document.createElement("h3");
     tabName.innerHTML = results[i].tab_name;
-    category.appendChild(tabName)
+    category.appendChild(tabName);
     
     // la div des adress dans est .women-address
     const womenAddress = document.createElement("div");
@@ -132,7 +134,25 @@ async function womenList() {
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     }
-   
+
+    else if (results[i].name === "Hélène Darroze") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://www.costacroisieres.fr/content/dam/costa/costa-asset/discovery/new-pillars-2021/lp-chefs/darroze/Img_1_Top_Helene_Mobile_562x723_02.jpg.image.1125.1446.low.jpg"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
+    }
+    else if (results[i].name === "Suzanne Lenglen") {
+      urlOfPictures.setAttribute(
+        "src",
+        "https://ichef.bbci.co.uk/images/ic/480xn/p0j2wn3x.jpg.webp"
+      );
+      urlOfPictures.style.width = "220px";
+      urlOfPictures.style.height = "330";
+    }
+  
+
     cardFront.append(name, pictures); 
     cardBack.append(category, womenAddress, allDescriptions);
 
@@ -145,8 +165,50 @@ async function womenList() {
     card.classList.toggle("flipped");
 
 
-    })
-  }
-}
-womenList();
+    });
+  };
+  setupFiltering();
+};
 
+
+function setupFiltering() {
+  // boutons id
+  const artButton = document.getElementById("artButton");
+  const chefButton = document.getElementById("chefButton");
+  const comButton = document.getElementById("comButton");
+  const letButton = document.getElementById("letButton");
+  const polButton = document.getElementById("polButton");
+  const sciButton = document.getElementById("sciButton");
+  const spButton = document.getElementById("spButton");
+  const allButton = document.getElementById("allButton");
+  
+
+  const buttons = [artButton, chefButton, comButton, letButton, polButton, sciButton, spButton, allButton];
+  const cards = document.querySelectorAll(".card");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedCategory = button.getAttribute("data-category");
+
+      // console.log("data-catégory");
+
+      // activer désactiver les bouttons 
+      buttons.forEach((buttonItem) => buttonItem.classList.remove("active"));
+      button.classList.add("active");
+
+      // Filtrer les cartes
+      cards.forEach((card) => {
+        const cardCategory = card.getAttribute("data-category"); // Utilise le data-category des cartes
+
+        // carte en fonction de la catégorie
+        if (selectedCategory === "all" || cardCategory === selectedCategory) {
+          card.style.display = "block"; 
+        } else {
+          card.style.display = "none"; 
+        }
+      });
+    });
+  });
+}
+
+womenList();

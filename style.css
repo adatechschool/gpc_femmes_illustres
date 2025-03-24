@@ -224,3 +224,28 @@ h1 {
   /* Limite la hauteur de l'image */
   object-fit: cover;
 }
+
+button {
+  background-color: #eddddb;
+  color: black; 
+  border: 1px solid #d1caca; /* Bordure grise */
+  padding: 10px 20px; /* Espace autour du texte */
+  font-size: 16px; 
+  cursor: pointer; /* survol courseur*/
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Transition couleur fond */
+}
+
+/* survol pour les boutons */
+button:hover {
+  background-color: rgba(173, 120, 120, 0.5); /* Plus sombre au survol */
+}
+
+/* Style pour les catégories (elles sont cachées au départ) */
+.category {
+  display: none;
+  margin-top: 20px;
+  margin-bottom: 20px; 
+  padding: 10px;
+
+}
