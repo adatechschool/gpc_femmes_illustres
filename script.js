@@ -205,10 +205,16 @@ let map = L.map('map').setView([48.8566, 2.3522], 13);
       card.classList.toggle("flipped");
     });
 
+  card.addEventListener("mouseleave", () =>{
+    card.classList.remove("flipped")
+
+  } )
     card.addEventListener("click", async function() {
+
       const addressText = results[i].short_desc;
       const coords = await geocodeAddress(addressText);
       const nameText = results[i].name;
+
       
       if (coords) {
           addMarker( coords, addressText, nameText); // Ajoute le marqueur sur la carte
