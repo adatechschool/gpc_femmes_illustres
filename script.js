@@ -1,3 +1,23 @@
+let map = L.map('map').setView([48.8566, 2.3522], 13);  
+      
+          
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 19,
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            var myIcon = L.icon({
+              iconUrl: 'https://files.slack.com/files-pri/TFLNG6MFU-F08K9BHRU1Z/scientifiques.png',
+              iconSize: [38, 95],
+              iconAnchor: [22, 94],
+              popupAnchor: [-3, -76],
+              shadowUrl: 'https://files.slack.com/files-pri/TFLNG6MFU-F08K9BHRU1Z/scientifiques.png',
+              shadowSize: [68, 95],
+              shadowAnchor: [22, 94]
+          });
+          
+          L.marker([48, 2], {icon: myIcon}).addTo(map);
+
 async function womenList() {
   const response = await fetch(
     "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/femmes-illustres-a-paris-portraits/records?limit=100&refine=tab_name%3A%22Artistes%22&refine=tab_name%3A%22Cheffes%22&refine=tab_name%3A%22Com%C3%A9diennes%22&refine=tab_name%3A%22Femmes%20de%20lettres%22&refine=tab_name%3A%22Politiques%22&refine=tab_name%3A%22Scientifiques%22&refine=tab_name%3A%22Sportives%22"
