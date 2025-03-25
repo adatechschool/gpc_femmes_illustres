@@ -265,9 +265,9 @@ display: flex;
 
 }
 #map { 
-  width: 600px;
-  height: 400px; 
+  width: 1200px;
+  height: 600px; 
   position: relative;
   outline-style: none;
-margin-top: -5%;
+/* margin-top: -5%; */
  }

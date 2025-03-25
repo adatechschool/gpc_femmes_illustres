@@ -6,24 +6,49 @@ let map = L.map('map').setView([48.8566, 2.3522], 13);
               attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
-            var myIcon = L.icon({
-              iconUrl: 'https://files.slack.com/files-pri/TFLNG6MFU-F08K9BHRU1Z/scientifiques.png',
-              iconSize: [38, 95],
+            let myIcon = L.icon({
+              iconUrl: 'icons/lettres.png', //image dossier 'icons'
+              iconSize: [38, 95], // Taille de l'icône
               iconAnchor: [22, 94],
-              popupAnchor: [-3, -76],
-              shadowUrl: 'https://files.slack.com/files-pri/TFLNG6MFU-F08K9BHRU1Z/scientifiques.png',
+              popupAnchor: [-3, -76], // endroit 
               shadowSize: [68, 95],
-              shadowAnchor: [22, 94]
-          });
-          
+              shadowAnchor: [22, 94],
+            });
+
           L.marker([48, 2], {icon: myIcon}).addTo(map);
 
-async function womenList() {
+      
+              // Fonction de géocodage d'une adresse
+    async function geocodeAddress(address) {
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json`);
+      const dataMap = await response.json();
+
+      if (dataMap.length > 0) {
+          const lat = dataMap[0].lat;
+          const lon = dataMap[0].lon;
+          return { lat, lon };
+      } else {
+          console.log(`Aucune donnée trouvée pour l'adresse: ${address}`);
+          return null;
+      }
+  }
+
+  // Ajoute un marqueur sur la carte à partir des coordonnées
+  function addMarker(coords, address, name) {
+      const { lat, lon } = coords;
+      const marker = L.marker([lat, lon], { icon: myIcon }).addTo(map);
+      marker.bindPopup(`<b>Nom :</b> ${name}<br></b><b>Adresse :</b> ${address}`);
+  }
+            
+
+
+          async function womenList() {
   const response = await fetch(
     "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/femmes-illustres-a-paris-portraits/records?limit=100&refine=tab_name%3A%22Artistes%22&refine=tab_name%3A%22Cheffes%22&refine=tab_name%3A%22Com%C3%A9diennes%22&refine=tab_name%3A%22Femmes%20de%20lettres%22&refine=tab_name%3A%22Politiques%22&refine=tab_name%3A%22Scientifiques%22&refine=tab_name%3A%22Sportives%22"
   );
 
   const data = await response.json();
+
 
   // document.querySelector("#womenTitle").innerHTML =
   //   `<h1>Femmes illustres à Paris  ${data.results.length} - Portraits 🔥</h1`;
@@ -65,13 +90,6 @@ async function womenList() {
     tabName.innerHTML = results[i].tab_name;
     category.appendChild(tabName);
 
-    // la div des adress dans est .women-address
-    const womenAddress = document.createElement("div");
-    womenAddress.classList.add("women-address");
-    const address = document.createElement("h3");
-    address.innerHTML = `Adresse : ${results[i].short_desc}`;
-    womenAddress.appendChild(address);
-
     // la div des photos dans est .women-pictures
     const pictures = document.createElement("div");
     pictures.classList.add("women-pictures");
@@ -97,6 +115,13 @@ async function womenList() {
     allDescriptions.classList.add("desc-all");
 
     allDescriptions.append(p1, p2, p3, p4, p5);
+
+  // la div des adress dans est .women-address
+  const womenAddress = document.createElement("div");
+  womenAddress.classList.add("women-address");
+  const address = document.createElement("h3");
+  address.innerHTML = `Adresse : ${results[i].short_desc}`;
+  womenAddress.appendChild(address);
 
     if (results[i].name === "Tatiana et Katia Levha") {
       urlOfPictures.setAttribute(
@@ -179,6 +204,18 @@ async function womenList() {
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
     });
+
+    card.addEventListener("click", async function() {
+      const addressText = results[i].short_desc;
+      const coords = await geocodeAddress(addressText);
+      const nameText = results[i].name;
+      
+      if (coords) {
+          addMarker( coords, addressText, nameText); // Ajoute le marqueur sur la carte
+      } else {
+          console.log("Impossible de géocoder l'adresse");
+      }
+  });
   }
   setupFiltering();
 }
