@@ -183,7 +183,6 @@ async function womenList() {
 
     document.querySelector("#womenPortraits").appendChild(card);
 
-
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
     });

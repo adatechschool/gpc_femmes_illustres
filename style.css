@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Montserrat';
-  src: url('./fonts/Montserrat-Bold.ttf') format('truetype'); /* Version bold */
+  src: url('./fonts/Montserrat-Bold.ttf') format('truetype');
+  /* Version bold */
   font-weight: 700;
   font-style: normal;
 }
@@ -8,7 +9,8 @@
 /* Intégration de la police Aboreto */
 @font-face {
   font-family: 'Aboreto';
-  src: url('./fonts/Aboreto-Regular.ttf') format('truetype'); /* Version normale */
+  src: url('./fonts/Aboreto-Regular.ttf') format('truetype');
+  /* Version normale */
   font-weight: 400;
   font-style: normal;
 }
@@ -31,9 +33,12 @@ body {
   height: 57vh;
   width: 100%;
   display: flex;
-  justify-content: flex-start; /* Aligne horizontalement à gauche */
-  align-items: flex-start; /* Aligne verticalement en bas */
-  padding-top: 20px; /* Ajoute un espace en bas */
+  justify-content: flex-start;
+  /* Aligne horizontalement à gauche */
+  align-items: flex-start;
+  /* Aligne verticalement en bas */
+  padding-top: 20px;
+  /* Ajoute un espace en bas */
   /* filter: grayscale(100%); */
   /* margin-bottom: 20px; */
 }
@@ -45,9 +50,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(73, 58, 58, 0.133); /* Filtre semi-transparent */
+  background: rgba(73, 58, 58, 0.133);
+  /* Filtre semi-transparent */
   filter: brightness(70%);
-  z-index: 1; /* Derrière le texte */
+  z-index: 1;
+  /* Derrière le texte */
 }
 
 .banner h1 {
@@ -55,10 +62,12 @@ body {
   /* font-family:; */
   font-size: 65px;
   text-align: left;
-  margin: 0; /* Supprime les marges externes */
+  margin: 0;
+  /* Supprime les marges externes */
   padding: 20px;
   color: white;
-  z-index: 2; /* Au-dessus du filtre */
+  z-index: 2;
+  /* Au-dessus du filtre */
   font-family: 'Aboreto';
   top: -20px;
 }
@@ -67,9 +76,11 @@ body {
 h1 {
   color: rgba(9, 8, 8, 0.873);
   text-align: left;
-  margin-top: 60px; /* Supprime la marge au-dessus du titre */
+  margin-top: 60px;
+  /* Supprime la marge au-dessus du titre */
   margin-bottom: 20px;
-  margin-left: 20px; /* Marge à gauche */
+  margin-left: 20px;
+  /* Marge à gauche */
   font-family: 'Aboreto';
   font-weight: bold;
 }
@@ -78,8 +89,10 @@ h1 {
   color: rgb(58, 58, 53);
   font-size: 1.2vw;
   text-align: left;
-  margin-top: 0; /* Réduit la marge entre le titre et le premier paragraphe */
-  margin-left: 20px; /* Marge à gauche */
+  margin-top: 0;
+  /* Réduit la marge entre le titre et le premier paragraphe */
+  margin-left: 20px;
+  /* Marge à gauche */
   font-family: 'montserrat';
 }
 
@@ -87,9 +100,11 @@ h1 {
   color: rgb(58, 58, 53);
   font-size: 1.2vw;
   text-align: left;
-  margin-top: 3px; /* Ajuste la marge entre p1 et p2 */
+  margin-top: 3px;
+  /* Ajuste la marge entre p1 et p2 */
   margin-bottom: 60px;
-  margin-left: 20px; /* Marge à gauche */
+  margin-left: 20px;
+  /* Marge à gauche */
   font-family: 'Montserrat';
 }
 
@@ -120,7 +135,6 @@ h1 {
   font-family: 'Aboreto';
   color: white;
 }
-
 
 .women-pictures {
   width: 220px;
@@ -154,16 +168,20 @@ h1 {
 }
 
 #womenPortraits::-webkit-scrollbar-thumb {
-  background-color: #eddddb;  /* Couleur barre */
-  border-radius: 4px;  
+  background-color: #eddddb;
+  /* Couleur barre */
+  border-radius: 4px;
 }
+
 #womenPortraits::-webkit-scrollbar-track {
-  background-color: #f0f0f0;  /* Couleur barre de défilement */
-  border-radius: 4px;  
+  background-color: #f0f0f0;
+  /* Couleur barre de défilement */
+  border-radius: 4px;
 }
 
 .card {
-  margin-top: 50px; /* Supprime la marge au-dessus du titre */
+  margin-top: 50px;
+  /* Supprime la marge au-dessus du titre */
   width: 300px;
   height: 450px;
   perspective: 1000px;
@@ -172,8 +190,8 @@ h1 {
   margin: 0.2%;
   border-radius: 5%;
   transform-origin: 60% 50%;
- 
-  scroll-snap-align: start; 
+
+  scroll-snap-align: start;
 }
 
 .card-inner {
@@ -183,7 +201,7 @@ h1 {
   /* Préserve l'effet 3D */
   transition: transform 0.6s;
   position: absolute;
-border-radius: 5%;
+  border-radius: 5%;
   /* transform: translateZ(0);  */
 }
 
@@ -209,7 +227,7 @@ border-radius: 5%;
 }
 
 .card:hover {
-  transform: scale(1.1) translateX(12px); 
+  transform: scale(1.1) translateX(12px);
   /* Agrandit la carte au survol */
   box-shadow: 0 4px 8px rgba(184, 1, 1, 0.2);
   /* Ajoute une ombre douce */
@@ -229,8 +247,7 @@ border-radius: 5%;
 .card-front .name-index {
   font-size: 1.2rem;
   color: rgb(0, 0, 0);
-  margin-bottom: 5px;
-  /* Espacement entre le nom et l'image */
+  margin-bottom: 3px;
 }
 
 .card-front .women-pictures {
@@ -255,46 +272,53 @@ border-radius: 5%;
 
 }
 
-.card-back .desc-all{
+.card-back .desc-all {
   padding: 20px;
 }
-.banner-two{
+
+.banner-two {
   display: flex;
-  justify-content: center; 
-  flex-wrap: wrap;        
-  gap: 5px;           
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
 
 }
+
 button {
   background-color: #eddddb;
-  color: black; 
-  border: 1px solid #d1caca; /* Bordure grise */
-  padding: 10px 20px; 
-  font-size: 16px; 
-  cursor: pointer; /* survol */
+  color: black;
+  border: 1px solid #d1caca;
+  /* Bordure grise */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  /* survol */
   border-radius: 5px;
-  transition: background-color 0.3s ease; /* Transition couleur */
+  transition: background-color 0.3s ease;
+  /* Transition couleur */
 }
 
 /* survol */
 button:hover {
-  background-color: rgba(173, 120, 120, 0.5); /* Plus sombre au survol */
+  background-color: rgba(173, 120, 120, 0.5);
+  /* Plus sombre au survol */
 }
 
 /* Style pour les catégories (elles sont cachées au départ) */
 .category {
   display: none;
   margin-top: 20px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
   padding: 10px;
 
 }
-.leafletContainer{
 
-display: flex;
-  justify-content: center; 
-  align-items: center; 
-  height: 600px; 
+.leafletContainer {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
   /* overflow-y: scroll; */
   position: relative;
   outline-style: none;
@@ -302,22 +326,26 @@ display: flex;
   margin: 0 auto;
   overflow: hidden;
 }
+
 .leafletContainer::-webkit-scrollbar {
   height: 9px;
 }
+
 .leafletContainer::-webkit-scrollbar-track {
-  background-color: #f0f0f0;  /* Couleur barre de défilement */
-  border-radius: 4px;  
+  background-color: #f0f0f0;
+  /* Couleur barre de défilement */
+  border-radius: 4px;
 }
 
 .leafletContainer::-webkit-scrollbar-track {
-  background-color: #f0f0f0;  /* Couleur barre de défilement */
-  border-radius: 4px;  
+  background-color: #f0f0f0;
+  /* Couleur barre de défilement */
+  border-radius: 4px;
 }
-#map { 
+
+#map {
   width: 1200px;
-  height: 600px; 
+  height: 600px;
   position: relative;
   outline-style: none;
- }
-
+}
