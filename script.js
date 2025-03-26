@@ -1,4 +1,3 @@
-
 import { categoryIcons } from "./arrayIcons.js";
 
 let map = L.map("map", {
@@ -183,7 +182,7 @@ async function womenList() {
     card.appendChild(cardInner);
 
     document.querySelector("#womenPortraits").appendChild(card);
-    // document.querySelector("#womenPortraits").appendChild(geoPoint);
+
 
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
