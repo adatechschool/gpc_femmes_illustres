@@ -1,61 +1,47 @@
-let map = L.map('map').setView([48.8566, 2.3522], 13);  
-      
-          
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              maxZoom: 19,
-              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            }).addTo(map);
 
-            let myIcon = L.icon({
-              iconUrl: 'icons/lettres.png', //image dossier 'icons'
-              iconSize: [38, 95], // Taille de l'icône
-              iconAnchor: [22, 94],
-              popupAnchor: [-3, -76], // endroit 
-              shadowSize: [68, 95],
-              shadowAnchor: [22, 94],
-            });
+import { categoryIcons } from "./arrayIcons.js";
 
-          L.marker([48, 2], {icon: myIcon}).addTo(map);
+let map = L.map("map", {
+  center: [48.8566, 2.3522], // Paris (latitude, longitude)
+  zoom: 13, // Zoom initial
+  maxZoom: 17, // Zoom maximum autorisé
+  minZoom: 12, // Zoom minimum autorisé (pour ne pas trop zoomer)
+  maxBounds: [
+    [48.815, 2.224], // Sud-Ouest de Paris
+    [48.902, 2.469], // Nord-Est de Paris
+  ], // Limiter la carte à la zone de Paris (Ile-de-France)
+  maxBoundsViscosity: 1.0, // Bloque le déplacement en dehors des limites
+});
 
-      
-              // Fonction de géocodage d'une adresse
-    async function geocodeAddress(address) {
-      const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json`);
-      const dataMap = await response.json();
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution:
+    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
 
-      if (dataMap.length > 0) {
-          const lat = dataMap[0].lat;
-          const lon = dataMap[0].lon;
-          return { lat, lon };
-      } else {
-          console.log(`Aucune donnée trouvée pour l'adresse: ${address}`);
-          return null;
-      }
+// Fonction de géocodage d'une adresse
+async function geocodeAddress(address) {
+  const response = await fetch(
+    `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json`
+  );
+  const dataMap = await response.json();
+
+  if (dataMap.length > 0) {
+    const lat = dataMap[0].lat;
+    const lon = dataMap[0].lon;
+    return { lat, lon };
+  } else {
+    console.log(`Aucune donnée trouvée pour l'adresse: ${address}`);
+    return null;
   }
+}
 
-  // Ajoute un marqueur sur la carte à partir des coordonnées
-  function addMarker(coords, address, name) {
-      const { lat, lon } = coords;
-      const marker = L.marker([lat, lon], { icon: myIcon }).addTo(map);
-      marker.bindPopup(`<b>Nom :</b> ${name}<br></b><b>Adresse :</b> ${address}`);
-  }
-            
-
-
-          async function womenList() {
+async function womenList() {
   const response = await fetch(
     "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/femmes-illustres-a-paris-portraits/records?limit=100&refine=tab_name%3A%22Artistes%22&refine=tab_name%3A%22Cheffes%22&refine=tab_name%3A%22Com%C3%A9diennes%22&refine=tab_name%3A%22Femmes%20de%20lettres%22&refine=tab_name%3A%22Politiques%22&refine=tab_name%3A%22Scientifiques%22&refine=tab_name%3A%22Sportives%22"
   );
 
   const data = await response.json();
-
-
-  // document.querySelector("#womenTitle").innerHTML =
-  //   `<h1>Femmes illustres à Paris  ${data.results.length} - Portraits 🔥</h1`;
-
-  // console.log("liste filtrée", data.results.filter((result)=> result.tab_name != "77 Illustres Parisiennes"))
-  // const results = data.results.filter((result)=> result.tab_name != "77 Illustres Parisiennes")
-
   const results = data.results;
   console.log(results);
 
@@ -109,19 +95,18 @@ let map = L.map('map').setView([48.8566, 2.3522], 13);
     const p5 = document.createElement("p");
     p5.innerHTML = results[i].desc5;
 
-
     // la div des descriptions est de type class sous le nom de .desc-all
     const allDescriptions = document.createElement("div");
     allDescriptions.classList.add("desc-all");
 
     allDescriptions.append(p1, p2, p3, p4, p5);
 
-  // la div des adress dans est .women-address
-  const womenAddress = document.createElement("div");
-  womenAddress.classList.add("women-address");
-  const address = document.createElement("h3");
-  address.innerHTML = `Adresse : ${results[i].short_desc}`;
-  womenAddress.appendChild(address);
+    // la div des adress dans est .women-address
+    const womenAddress = document.createElement("div");
+    womenAddress.classList.add("women-address");
+    const address = document.createElement("h3");
+    address.innerHTML = `Adresse : ${results[i].short_desc}`;
+    womenAddress.appendChild(address);
 
     if (results[i].name === "Tatiana et Katia Levha") {
       urlOfPictures.setAttribute(
@@ -180,6 +165,9 @@ let map = L.map('map').setView([48.8566, 2.3522], 13);
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     } else if (results[i].name === "Suzanne Lenglen") {
+      console.log(
+        "Adresse mise à jour pour Suzanne Lenglen : " + results[i].short_desc
+      );
       urlOfPictures.setAttribute(
         "src",
         "https://ichef.bbci.co.uk/images/ic/480xn/p0j2wn3x.jpg.webp"
@@ -188,10 +176,6 @@ let map = L.map('map').setView([48.8566, 2.3522], 13);
       urlOfPictures.style.height = "330";
     }
 
-    // const geoPoint = document.createElement("div");
-    // geoPoint.classList.add("geo-point");
-    // geoPoint.innerHTML = results[i].properties.geo_point_2d;
-
     cardFront.append(name, pictures);
     cardBack.append(category, womenAddress, allDescriptions);
 
@@ -199,29 +183,90 @@ let map = L.map('map').setView([48.8566, 2.3522], 13);
     card.appendChild(cardInner);
 
     document.querySelector("#womenPortraits").appendChild(card);
-   // document.querySelector("#womenPortraits").appendChild(geoPoint);
+    // document.querySelector("#womenPortraits").appendChild(geoPoint);
 
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
     });
 
-  card.addEventListener("mouseleave", () =>{
-    card.classList.remove("flipped")
+    card.addEventListener("mouseleave", () => {
+      card.classList.remove("flipped");
+    });
 
-  } )
-    card.addEventListener("click", async function() {
+    function addMarker(coords, address, name, categoryText) {
+      const { lat, lon } = coords;
+      const categoryIcon = categoryIcons[categoryText].icon;
 
-      const addressText = results[i].short_desc;
-      const coords = await geocodeAddress(addressText);
+      const marker = L.marker([lat, lon], { icon: categoryIcon }).addTo(map);
+      const popupContent = `<b>Nom :</b> ${name}<br></b><b>Adresse :</b> ${address}`;
+      marker.bindPopup(popupContent).openPopup();
+      setTimeout(() => {
+        marker.closePopup();
+      }, 3000);
+
+      marker.on("click", () => {
+        marker.bindPopup(popupContent).openPopup();
+        setTimeout(() => {
+          marker.closePopup();
+        }, 3000);
+      });
+
+      // marker.on("mouseenter", () => {
+      //   marker.openPopup();
+      // });
+      // marker.on("mouseover", () => {});
+    }
+    card.addEventListener("click", async function () {
+      let addressText = results[i].short_desc;
       const nameText = results[i].name;
+      const categoryText = results[i].tab_name.toLowerCase();
 
-      
-      if (coords) {
-          addMarker( coords, addressText, nameText); // Ajoute le marqueur sur la carte
-      } else {
-          console.log("Impossible de géocoder l'adresse");
+      if (nameText === "Suzanne Lenglen") {
+        addressText = "65, rue du Ranelagh, 75016 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Marie curie") {
+        addressText = "1, rue Pierre et Marie Curie, 75005 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Flora Tristan") {
+        addressText = "100bis rue du Bac, 75007 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Réjane") {
+        addressText = "15, Rue Blanche, 75009 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Marguerite Durand") {
+        addressText = "14 rue Saint-Georges,75009 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Émilie du Chatelet") {
+        addressText = "2, Rue Saint-Louis en l'Ile, 75004 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "George Sand") {
+        addressText = "46, Rue Meslay 75003, Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Françoise Barré-Sinoussi") {
+        addressText = "25-28, Rue du Docteur Roux, 75015 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Louise Michel") {
+        addressText = "Square Montmartre, 75018 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Germaine Tillion") {
+        addressText = "Place du Panthéon, 75005 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Nicole-Reine Lepaute") {
+        addressText = "5, rue de Vaugirard, 75006 Paris";
+        results[i].short_desc = addressText;
+      } else if (nameText === "Jacqueline de Romilly") {
+        addressText = "12 rue Chernoviz, 75016 Paris";
+        results[i].short_desc = addressText;
       }
-  });
+
+      const coords = await geocodeAddress(addressText);
+
+      if (coords) {
+        addMarker(coords, addressText, nameText, categoryText); // Ajoute le marqueur sur la carte
+      } else {
+        console.log("Impossible de géocoder l'adresse");
+      }
+    });
   }
   setupFiltering();
 }
@@ -274,27 +319,3 @@ function setupFiltering() {
     });
   });
 }
-
-
-
-// function getAddress {
-
-   
-
-// }
-
-
-// window.onload = async function() {
-//   // La carte sera créée une fois que tout le contenu est chargé
-//   let map = L.map("map").setView([48.8566, 2.3522], 13); // Paris
-
-//   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//     maxZoom: 19,
-//     attribution:
-//       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-//   }).addTo(map);
-
-//   // Si tu as une fonction asynchrone, tu peux l'appeler ici :
-//   await womenList();
-// };
-
