@@ -186,6 +186,7 @@ h2{
   scroll-snap-align: start;
   overflow: hidden;  /* pour ne pas dépsser l'espace de la carte */
 }
+ 
 
 .card-inner {
   width: 100%;
@@ -277,6 +278,7 @@ h2{
 
 }
 
+
 button {
   background-color: #eddddb;
   color: black;
@@ -335,8 +337,7 @@ button:hover {
   /* Couleur barre de défilement */
   border-radius: 4px;
 }
-
-#map {
+#map { 
   width: 1200px;
   height: 600px;
   position: relative;
