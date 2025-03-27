@@ -1,14 +1,14 @@
 import { categoryIcons } from "./arrayIcons.js";
 
 let map = L.map("map", {
-  center: [48.8566, 2.3522], // Paris (latitude, longitude)
-  zoom: 13, // Zoom initial
+  center: [48.8566, 2.3522], // Paris (lat, lon)
+  zoom: 12, // Zoom initial
   maxZoom: 17, // Zoom maximum autorisé
-  minZoom: 12, // Zoom minimum autorisé (pour ne pas trop zoomer)
+  minZoom: 11.3, // Zoom minimum autorisé (pour ne pas trop zoomer)
   maxBounds: [
     [48.815, 2.224], // Sud-Ouest de Paris
     [48.902, 2.469], // Nord-Est de Paris
-  ], // Limiter la carte à la zone de Paris (Ile-de-France)
+  ], // zone Ile-de-France
   maxBoundsViscosity: 1.0, // Bloque le déplacement en dehors des limites
 });
 
@@ -182,6 +182,7 @@ async function womenList() {
     card.appendChild(cardInner);
 
     document.querySelector("#womenPortraits").appendChild(card);
+    // document.querySelector("#womenPortraits").appendChild(geoPoint);
 
     card.addEventListener("click", () => {
       card.classList.toggle("flipped");
@@ -208,10 +209,8 @@ async function womenList() {
           marker.closePopup();
         }, 3000);
       });
-
       // marker.on("mouseenter", () => {
-      //   marker.openPopup();
-      // });
+      //   marker.openPopup(); });
       // marker.on("mouseover", () => {});
     }
     card.addEventListener("click", async function () {
@@ -254,6 +253,9 @@ async function womenList() {
         results[i].short_desc = addressText;
       } else if (nameText === "Jacqueline de Romilly") {
         addressText = "12 rue Chernoviz, 75016 Paris";
+        results[i].short_desc = addressText;
+      }else if (nameText === "Nikki de St Phalle") {
+        addressText = "Place Igor Stravinsky, 75003 paris";
         results[i].short_desc = addressText;
       }
 
