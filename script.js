@@ -110,56 +110,56 @@ async function womenList() {
     if (results[i].name === "Tatiana et Katia Levha") {
       urlOfPictures.setAttribute(
         "src",
-        "https://scontent-cdg4-1.xx.fbcdn.net/v/t1.6435-9/53607294_2241335142624891_7025497508960796672_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=q2kNJilZtZ0Q7kNvgHk862F&_nc_oc=AdhXoZE8TBOxfxQWsrUmufyyVYXHrYeTwIRJbwliIIf8Q-fF6ZPmluR3b-cYI5-zSMc&_nc_zt=23&_nc_ht=scontent-cdg4-1.xx&_nc_gid=3NG3EHCcFo6R2fZcCKv9kQ&oh=00_AYHltQ1vNieWAHUqRBMCvx9SH9dxiUZCMTwKhDkSDlKPJA&oe=680117A7"
+        "photos/Tatiana_Katia_Levha.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     } else if (results[i].name === "Christelle Brua") {
       urlOfPictures.setAttribute(
         "src",
-        "https://www.viedeluxe.fr/wp-content/uploads/2023/02/Christelle-Brua-@NataliaKhoroshaieva.jpg"
+        "photos/Christelle_Brua.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     } else if (results[i].name === "Roxana Maracineanu") {
       urlOfPictures.setAttribute(
         "src",
-        "https://cacheimg.gsp.ro/autocrop/smp-images-production/gsp.ro/01082024/67e85de5-022d-4803-9d9b-70672e70edc0.jpg?width=900&height=0"
+        "photos/Roxana_Maracineanu.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     } else if (results[i].name === "Alessandra Montagne") {
       urlOfPictures.setAttribute(
         "src",
-        "https://cdn.shopify.com/s/files/1/0796/9751/0688/files/Anne_Claire_HERAUD_4_600x600.jpg?v=1693330894"
+        "photos/Alessandra_Montagne.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     } else if (results[i].name === "Eleonora Zuliani") {
       urlOfPictures.setAttribute(
         "src",
-        "https://foodandsens.com/wp-content/uploads/2017/11/eleonora.jpg"
+        "photos/Eleonora_Zuliani.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     } else if (results[i].name === "Manon Fleury") {
       urlOfPictures.setAttribute(
         "src",
-        "https://img.lemde.fr/2024/01/15/0/0/3319/4724/664/0/75/0/2aa1fe6_1705332752011-manon-fleury-a-terencebk-17-copie.jpg"
+        "photos/Manon_Fleury.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     } else if (results[i].name === "Justine Piluso") {
       urlOfPictures.setAttribute(
         "src",
-        "https://simoneetnelson.com/wp-content/uploads/2025/01/Justine-PILUSO-min.png"
+        "photos/Justine_PILUSO.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
     } else if (results[i].name === "Hélène Darroze") {
       urlOfPictures.setAttribute(
         "src",
-        "https://www.costacroisieres.fr/content/dam/costa/costa-asset/discovery/new-pillars-2021/lp-chefs/darroze/Img_1_Top_Helene_Mobile_562x723_02.jpg.image.1125.1446.low.jpg"
+        "photos/Helene_Darroze.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
@@ -169,7 +169,7 @@ async function womenList() {
       );
       urlOfPictures.setAttribute(
         "src",
-        "https://ichef.bbci.co.uk/images/ic/480xn/p0j2wn3x.jpg.webp"
+        "photos/Suzanne_Lenglen.jpg"
       );
       urlOfPictures.style.width = "220px";
       urlOfPictures.style.height = "330";
@@ -209,9 +209,7 @@ async function womenList() {
           marker.closePopup();
         }, 3000);
       });
-      // marker.on("mouseenter", () => {
-      //   marker.openPopup(); });
-      // marker.on("mouseover", () => {});
+  
     }
     card.addEventListener("click", async function () {
       let addressText = results[i].short_desc;
